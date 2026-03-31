@@ -16,7 +16,9 @@ const jobRoutes = require('./routes/job');
 app.use('/api/job', jobRoutes);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {})
+mongoose.connect(process.env.MONGO_URI, {
+  dbName: "testMog"
+})
   .then(() => {
     console.log('Connected to MongoDB');
     // Start server
