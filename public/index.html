@@ -169,7 +169,7 @@
     function renderJobs(jobs) {
       const list = document.getElementById('jobList');
       list.innerHTML = '';
-      
+
       if (!Array.isArray(jobs) || jobs.length === 0) {
         list.innerHTML = '<p>No jobs found. Add one above or insert dummy data!</p>';
         return;
@@ -188,15 +188,15 @@
           <span class="tag">📍 ${escapeHTML(job.location)}</span>
           <span class="tag" style="background:#f3e5f5; color:#7b1fa2">ID: ${job._id.slice(-6)}</span>
         `;
-        
+
         item.querySelector('.btn-edit').addEventListener('click', () => {
           editJob(job._id, job.title, job.description, job.location);
         });
-        
+
         item.querySelector('.btn-delete').addEventListener('click', () => {
           deleteJob(job._id);
         });
-        
+
         list.appendChild(item);
       });
     }

@@ -17,13 +17,13 @@ app.use('/api/job', jobRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {})
-.then(() => {
-  console.log('Connected to MongoDB');
-  // Start server
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Start server
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to connect to MongoDB', err);
   });
-})
-.catch((err) => {
-  console.error('Failed to connect to MongoDB', err);
-});
