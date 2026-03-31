@@ -21,11 +21,17 @@ mongoose.connect(process.env.MONGO_URI, {
 })
   .then(() => {
     console.log('Connected to MongoDB');
-    // Start server
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
   })
   .catch((err) => {
     console.error('Failed to connect to MongoDB', err);
   });
+
+// Start server only in local dev (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel serverless
+module.exports = app;
